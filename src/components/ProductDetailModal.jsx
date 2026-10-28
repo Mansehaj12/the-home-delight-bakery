@@ -194,17 +194,18 @@ export default function ProductDetailModal({ hamper, onClose }) {
                 </p>
               </div>
 
-              {/* Confirmed items (or friendly note) */}
+              {/* What's Inside section listing all contents and quantities */}
               {hamper.isConfirmed && hamper.includedItems ? (
-                <div className="space-y-1.5 p-3 rounded-xl bg-bakery-cream/70 border border-bakery-border text-xs">
-                  <h4 className="font-bold uppercase tracking-wider text-bakery-brown text-[10px]">
-                    What's Included:
+                <div className="space-y-2 p-3 sm:p-4 rounded-xl bg-bakery-cream/70 border border-bakery-border text-xs">
+                  <h4 className="font-serif font-bold text-sm text-bakery-maroon flex items-center gap-1.5">
+                    <span>🎁</span>
+                    <span>What's Inside the Box:</span>
                   </h4>
-                  <ul className="space-y-1">
+                  <ul className="space-y-1.5">
                     {hamper.includedItems.map((item, i) => (
-                      <li key={i} className="text-bakery-brown flex items-start gap-1.5 text-[11px] sm:text-xs">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700 flex-shrink-0 mt-0.5" />
-                        <span>{item}</span>
+                      <li key={i} className="text-bakery-brown flex items-start gap-2 text-xs sm:text-sm">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-700 flex-shrink-0 mt-0.5" />
+                        <span className="leading-snug">{item}</span>
                       </li>
                     ))}
                   </ul>

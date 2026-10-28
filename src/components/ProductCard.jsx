@@ -42,8 +42,8 @@ export default function ProductCard({ hamper, onSelectProduct }) {
       {/* Product Information Section — All details outside the photograph */}
       <div className="p-3 sm:p-4 flex-1 flex flex-col justify-between space-y-2.5 sm:space-y-3">
         <div className="space-y-2">
-          {/* 2. Product Name */}
-          <h3 className="font-serif font-bold text-sm sm:text-base text-bakery-brown group-hover:text-bakery-maroon transition-colors line-clamp-1 leading-snug">
+          {/* 2. Product Name — Full title visible over up to 2 lines */}
+          <h3 className="font-serif font-bold text-sm sm:text-base text-bakery-brown group-hover:text-bakery-maroon transition-colors line-clamp-2 leading-snug min-h-[2.5rem] flex items-center">
             {hamper.name}
           </h3>
 
@@ -73,6 +73,28 @@ export default function ProductCard({ hamper, onSelectProduct }) {
           <p className="text-[11px] sm:text-xs text-bakery-brown-muted line-clamp-2 leading-relaxed">
             {hamper.shortDescription}
           </p>
+
+          {/* What's inside the box */}
+          {hamper.includedItems && hamper.includedItems.length > 0 && (
+            <div className="bg-bakery-cream/50 rounded-xl p-2 border border-bakery-border/60 text-left">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-bakery-maroon block mb-1">
+                What's inside:
+              </span>
+              <ul className="space-y-0.5">
+                {hamper.includedItems.slice(0, 3).map((item, idx) => (
+                  <li key={idx} className="text-[11px] text-bakery-brown truncate flex items-center gap-1">
+                    <span className="text-bakery-gold-dark font-bold text-[10px] flex-shrink-0">•</span>
+                    <span className="truncate">{item}</span>
+                  </li>
+                ))}
+                {hamper.includedItems.length > 3 && (
+                  <li className="text-[10px] font-semibold text-bakery-maroon pt-0.5">
+                    +{hamper.includedItems.length - 3} more items • click details
+                  </li>
+                )}
+              </ul>
+            </div>
+          )}
         </div>
 
         {/* 5 & 6. Action Buttons: Details + WhatsApp Order */}

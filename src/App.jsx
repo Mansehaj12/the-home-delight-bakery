@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import TrustBadges from './components/TrustBadges';
+import KhoyaBarfiSection from './components/KhoyaBarfiSection';
+import ChocolateBoxesSection from './components/ChocolateBoxesSection';
 import ProductGrid from './components/ProductGrid';
 import ProductDetailModal from './components/ProductDetailModal';
 import CorporateGifting from './components/CorporateGifting';
@@ -18,14 +20,14 @@ export default function App() {
   const [selectedHamper, setSelectedHamper] = useState(null);
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
 
-  const handleHeroQuickView = (productId = 'khoya-barfi') => {
+  const handleHeroQuickView = (productId = 'hamper-1350') => {
     const product = HAMPERS.find(h => h.id === productId) || HAMPERS[0];
     setSelectedHamper(product);
   };
 
   const scrollToHampers = (e) => {
     e?.preventDefault();
-    const el = document.getElementById('hampers');
+    const el = document.getElementById('khoya-barfi');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
@@ -36,9 +38,9 @@ export default function App() {
       {/* Navigation */}
       <Navbar />
 
-      {/* Main Content */}
+      {/* Main Content Flow */}
       <main className="flex-grow">
-        {/* Compact Conversion-focused Hero */}
+        {/* 1. Homepage Hero */}
         <HeroSection
           onExploreClick={scrollToHampers}
           onQuickViewHeroProduct={handleHeroQuickView}
@@ -47,7 +49,13 @@ export default function App() {
         {/* Compact Single-Row Trust Badges */}
         <TrustBadges />
 
-        {/* Diwali Hamper Collection (Products as Main Focus) */}
+        {/* 2. Khoya Barfi Section */}
+        <KhoyaBarfiSection onSelectProduct={(hamper) => setSelectedHamper(hamper)} />
+
+        {/* 3. Chocolate Boxes Section */}
+        <ChocolateBoxesSection onSelectProduct={(hamper) => setSelectedHamper(hamper)} />
+
+        {/* 4. Remaining Diwali Hampers */}
         <ProductGrid onSelectProduct={(hamper) => setSelectedHamper(hamper)} />
 
         {/* Corporate Gifting Section */}

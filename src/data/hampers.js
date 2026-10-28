@@ -155,19 +155,18 @@ export const HAMPERS = [
     price: 700,
     priceFormatted: "₹700",
     priceRange: "500-1000",
-    image: "/images/products/hamper_700_chocolates.jpeg",
+    image: "/images/products/heritage_trunk1.png",
     alt: "Heritage Trunk Hamper (Chocolates & Jars) ₹700 from The Home Delight Bakery",
     tag: "Heritage Trunk • 100% Eggless",
-    shortDescription: "Peacock & diya heritage trunk box packed with assorted flavoured chocolates, cake pops, and artisanal jars.",
+    shortDescription: "Traditional peacock & diya heritage gift trunk box with assorted chocolates, cake pops, and handcrafted jars.",
     isConfirmed: true,
     weight: "5-Item Gift Trunk",
     includedItems: [
-      "Mix flavour chocolates (8 pieces)",
-      "Vanilla cake pops (2 pieces)",
-      "Coconut laadu (100g)",
-      "Chatpatti lemon amla chutney (150g)",
-      "Carrot murabba (120g)",
-      "Royal peacock & diya heritage gift trunk box"
+      "8 pieces of assorted flavour chocolates",
+      "2 vanilla cake pops",
+      "100 g coconut ladoo",
+      "150 g chatpatti lemon amla chutney",
+      "120 g carrot murabba"
     ],
     customizationAvailable: true
   },
@@ -177,18 +176,17 @@ export const HAMPERS = [
     price: 700,
     priceFormatted: "₹700",
     priceRange: "500-1000",
-    image: "/images/products/hamper_700_drycake.jpeg",
+    image: "/images/products/heritage_2.jpeg",
     alt: "Heritage Trunk Hamper (Dry Cake & Jars) ₹700 from The Home Delight Bakery",
     tag: "Heritage Trunk • 100% Eggless",
-    shortDescription: "Peacock & diya heritage trunk box filled with wholesome jaggery dry cake and handcrafted jars.",
+    shortDescription: "Traditional peacock & diya heritage trunk box filled with wholesome jaggery dry cake and handcrafted jars.",
     isConfirmed: true,
     weight: "4-Item Gift Trunk",
     includedItems: [
-      "Whole wheat jaggery cake (250g)",
-      "Coconut laadu (100g)",
-      "Chatpatti lemon amla chutney (150g)",
-      "Carrot murabba (120g)",
-      "Royal peacock & diya heritage gift trunk box"
+      "Whole wheat jaggery cake 250g",
+      "Coconut laadu 100g",
+      "Chatpatti lemon amla chutney 150g",
+      "Carrot murabba 120g"
     ],
     customizationAvailable: true
   },
@@ -220,18 +218,17 @@ export const HAMPERS = [
     price: 1000,
     priceFormatted: "₹1,000",
     priceRange: "500-1000",
-    image: "/images/products/hamper_1000.jpeg",
+    image: "/images/products/green_cash.jpeg",
     alt: "Pichwai Lotus Dry Fruit & Chocolate Hamper ₹1,000 from The Home Delight Bakery",
     tag: "Dry Fruits & Chocolates • 100% Eggless",
-    shortDescription: "Pichwai lotus green & gold foil gift box loaded with premium cashews, almonds, and handcrafted chocolates.",
+    shortDescription: "Exquisite green Pichwai lotus gift box loaded with cashews, almonds, and handcrafted chocolates.",
     isConfirmed: true,
-    weight: "Dry Fruits & Chocolates",
+    weight: "Dry Fruits & Chocolates (4-Item Box)",
     includedItems: [
-      "Premium cashew / kaju (200g in glass jar)",
-      "Premium almonds / badam (200g in glass jar)",
-      "Mix flavour chocolates (8 pieces)",
-      "Vanilla cake pop (1 piece)",
-      "Luxury Pichwai lotus festive gift box with golden foil"
+      "8 pieces of mix flavour chocolates",
+      "1 vanilla cake pop",
+      "200 g premium cashew",
+      "200 g premium almonds"
     ],
     customizationAvailable: true
   },
