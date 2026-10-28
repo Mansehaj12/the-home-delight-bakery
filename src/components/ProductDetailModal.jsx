@@ -121,17 +121,12 @@ export default function ProductDetailModal({ hamper, onClose }) {
             
             {/* Image Column */}
             <div className="sm:col-span-5 space-y-2">
-              <div className="rounded-xl sm:rounded-2xl overflow-hidden bg-white border border-bakery-border aspect-[1.2/1] relative shadow-xs flex items-center justify-center">
+              <div className="rounded-xl sm:rounded-2xl overflow-hidden bg-[#FAF5EE] border border-bakery-border aspect-[4/3] relative shadow-xs flex items-center justify-center">
                 <img
-                  src={hamper.image}
+                  src={selectedVariant?.image || hamper.image}
                   alt={hamper.alt || hamper.name}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                 />
-                {hamper.isConfirmed && (
-                  <div className="absolute top-2 left-2 bg-bakery-maroon text-white text-[10px] px-2 py-0.5 rounded-full font-semibold shadow-xs border border-bakery-gold/40">
-                    ★ Real Bakery Photo
-                  </div>
-                )}
               </div>
 
               <p className="text-[11px] text-emerald-800 font-semibold flex items-center gap-1 justify-center sm:justify-start">

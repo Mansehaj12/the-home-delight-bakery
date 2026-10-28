@@ -10,20 +10,18 @@ export default function HeroSection({ onExploreClick, onQuickViewHeroProduct }) 
     'khoya-barfi': {
       id: 'khoya-barfi',
       title: 'Homemade Desi Ghee Khoya Barfi',
-      tagline: '100% Eggless • In Purple (500g) & Red (1kg) Festive Boxes',
-      price: 'From ₹400',
-      badge: '★ Signature Khoya Barfi',
-      image: '/images/khoya_barfi.png',
-      alt: 'Homemade Desi Ghee Khoya Barfi promotional poster'
+      tagline: '100% Eggless • 500 g (₹400) & 1 kg (₹800)',
+      price: '₹400 / ₹800',
+      image: '/images/products/khoya_barfi.png',
+      alt: 'Homemade Desi Ghee Khoya Barfi in festive purple and red gift boxes'
     },
     'hamper-200': {
-      id: 'hamper-200',
-      title: 'Premium Handcrafted Chocolate Boxes',
-      tagline: '100% Eggless • Flavoured Chocolates & Cake Pop (₹200 & ₹350)',
-      price: 'From ₹200',
-      badge: '★ Festive Chocolates',
-      image: '/images/choco_box.png',
-      alt: 'Premium Chocolate Boxes promotional poster'
+      id: 'choco-box-200',
+      title: 'Handcrafted Flavoured Chocolate Box',
+      tagline: '100% Eggless • 12 Handcrafted Treats in Festive Box',
+      price: '₹200',
+      image: '/images/products/choco_200.png',
+      alt: 'Handcrafted Flavoured Chocolate Box ₹200'
     }
   };
 
@@ -122,33 +120,28 @@ export default function HeroSection({ onExploreClick, onQuickViewHeroProduct }) 
               onClick={() => onQuickViewHeroProduct(current.id)}
               className="bg-white rounded-2xl sm:rounded-3xl p-2.5 sm:p-3.5 shadow-card-subtle hover:shadow-card-hover border border-bakery-border transition-all duration-300 cursor-pointer group relative max-w-sm sm:max-w-md mx-auto"
             >
-              {/* Product Photograph Container: 1.2:1 aspect ratio preserving the full poster */}
-              <div className="relative aspect-[1.2/1] rounded-xl sm:rounded-2xl overflow-hidden bg-bakery-cream border border-bakery-border/50 flex items-center justify-center">
+              {/* Product Photograph Container: Clean product photo with no overlays */}
+              <div className="relative aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden bg-[#FAF5EE] border border-bakery-border/50 flex items-center justify-center">
                 <img
                   src={current.image}
                   alt={current.alt}
-                  className="w-full h-full object-contain group-hover:scale-102 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                   loading="eager"
                 />
-
-                {/* Actual Bakery Photo Badge */}
-                <div className="absolute top-2 left-2 bg-bakery-maroon/90 backdrop-blur-xs text-white text-[10px] sm:text-xs px-2.5 py-1 rounded-full font-semibold border border-bakery-gold/40 shadow-xs flex items-center gap-1">
-                  <span>★</span>
-                  <span>{current.badge}</span>
-                </div>
-
-                <div className="absolute bottom-2 right-2 bg-white/95 backdrop-blur-xs text-bakery-maroon text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-xs border border-bakery-border">
-                  {current.price}
-                </div>
               </div>
 
-              {/* Compact Caption */}
+              {/* Product Details Outside the Photo */}
               <div className="pt-2.5 pb-0.5 px-1 flex items-center justify-between gap-2">
                 <div>
-                  <h3 className="font-serif font-bold text-sm sm:text-base text-bakery-brown group-hover:text-bakery-maroon transition-colors line-clamp-1">
-                    {current.title}
-                  </h3>
-                  <p className="text-[11px] text-bakery-brown-muted line-clamp-1">
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-serif font-bold text-sm sm:text-base text-bakery-brown group-hover:text-bakery-maroon transition-colors line-clamp-1">
+                      {current.title}
+                    </h3>
+                    <span className="font-serif font-bold text-xs text-bakery-maroon bg-bakery-cream px-2 py-0.5 rounded-md border border-bakery-border flex-shrink-0">
+                      {current.price}
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-bakery-brown-muted line-clamp-1 mt-0.5">
                     {current.tagline}
                   </p>
                 </div>
