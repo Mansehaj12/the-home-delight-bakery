@@ -15,17 +15,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
 
   const navLinks = [
     { label: "Home", href: "#home" },
@@ -131,8 +120,14 @@ export default function Navbar() {
 
         {/* Mobile Navigation Drawer with Overlay */}
         {isOpen && (
-          <div className="lg:hidden fixed inset-x-0 top-[73px] bottom-0 z-50 bg-black/40 backdrop-blur-xs animate-fadeIn">
-            <div className="bg-bakery-ivory border-b border-bakery-border px-5 py-5 space-y-4 shadow-xl max-h-[85vh] overflow-y-auto">
+          <div
+            onClick={() => setIsOpen(false)}
+            className="lg:hidden fixed inset-x-0 top-[73px] bottom-0 z-50 bg-black/40 backdrop-blur-xs animate-fadeIn"
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="bg-bakery-ivory border-b border-bakery-border px-5 py-5 space-y-4 shadow-xl max-h-[85vh] overflow-y-auto"
+            >
               <nav className="flex flex-col divide-y divide-bakery-border/50">
                 {navLinks.map((link) => (
                   <a

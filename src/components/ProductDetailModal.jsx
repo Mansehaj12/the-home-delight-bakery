@@ -33,11 +33,11 @@ export default function ProductDetailModal({ hamper, onClose }) {
     setNeedByDate("");
   }, [hamper]);
 
-  // Lock body scroll when modal is open
+  // Ensure scroll is fully restored on unmount
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.removeProperty('overflow');
+      document.documentElement.style.removeProperty('overflow');
     };
   }, []);
 
@@ -84,6 +84,7 @@ export default function ProductDetailModal({ hamper, onClose }) {
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-hamper-title"
+      onClick={onClose}
       className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 overflow-y-auto bg-black/60 backdrop-blur-xs animate-fadeIn"
     >
       {/* Modal Container */}
