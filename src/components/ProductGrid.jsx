@@ -1,9 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { Filter, ArrowUpDown, Sparkles, MessageCircle } from 'lucide-react';
+import { ArrowUpDown, Sparkles, MessageCircle } from 'lucide-react';
 import ProductCard from './ProductCard';
 import { HAMPERS, FILTER_CATEGORIES } from '../data/hampers';
-import { BAKERY_INFO } from '../data/bakeryInfo';
-import { createWhatsAppLink, buildGeneralEnquiryMessage } from '../utils/whatsapp';
+import { createWhatsAppLink } from '../utils/whatsapp';
 
 export default function ProductGrid({ onSelectProduct }) {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -35,37 +34,37 @@ export default function ProductGrid({ onSelectProduct }) {
   }, [activeFilter, sortBy]);
 
   return (
-    <section id="hampers" className="py-16 sm:py-20 bg-bakery-cream/40 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="hampers" className="py-8 sm:py-16 bg-bakery-cream/30 relative">
+      <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-bakery-gold/15 text-bakery-maroon text-xs font-semibold border border-bakery-gold/40">
-            <Sparkles className="w-3.5 h-3.5 text-bakery-gold-dark" />
-            <span>Diwali 2026 Collection</span>
+        <div className="text-center max-w-2xl mx-auto space-y-1.5 sm:space-y-2.5 mb-6 sm:mb-10">
+          <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-bakery-gold/20 text-bakery-maroon text-[11px] font-semibold border border-bakery-gold/40">
+            <Sparkles className="w-3 h-3 text-bakery-gold-dark" />
+            <span>Festive Gifting Catalogue</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-bakery-maroon tracking-tight">
-            Diwali Hamper Collection
+          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-bakery-maroon tracking-tight">
+            Find Your Perfect Diwali Hamper
           </h2>
 
-          <p className="text-sm sm:text-base text-bakery-brown-muted leading-relaxed">
-            Thoughtfully curated festive hampers, 100% eggless and handcrafted with love in Patiala. Browse the collection below and connect directly on WhatsApp to order.
+          <p className="text-xs sm:text-sm text-bakery-brown-muted leading-relaxed">
+            Thoughtful gifts for family, friends, and celebrations.
           </p>
         </div>
 
-        {/* Filter and Sort Controls Bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pb-8 mb-4 border-b border-bakery-border">
+        {/* Filter and Sort Controls Bar (Compact on mobile) */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pb-5 mb-5 border-b border-bakery-border">
           
-          {/* Price Range Filter Pills */}
-          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none">
+          {/* Price Range Filter Pills: Scrollable */}
+          <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1.5 sm:pb-0 scrollbar-none">
             {FILTER_CATEGORIES.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveFilter(cat.id)}
-                className={`px-3.5 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors min-h-[34px] ${
                   activeFilter === cat.id
-                    ? 'bg-bakery-maroon text-white shadow-sm ring-2 ring-bakery-gold/40'
+                    ? 'bg-bakery-maroon text-white shadow-2xs'
                     : 'bg-white text-bakery-brown border border-bakery-border hover:bg-bakery-cream'
                 }`}
               >
@@ -75,19 +74,19 @@ export default function ProductGrid({ onSelectProduct }) {
           </div>
 
           {/* Sort & Count */}
-          <div className="flex items-center justify-between w-full md:w-auto gap-4">
-            <span className="text-xs text-bakery-brown-muted">
-              Showing <span className="font-bold text-bakery-maroon">{filteredHampers.length}</span> hampers
+          <div className="flex items-center justify-between w-full sm:w-auto gap-3 text-xs">
+            <span className="text-bakery-brown-muted">
+              <span className="font-bold text-bakery-maroon">{filteredHampers.length}</span> hampers
             </span>
 
-            <div className="flex items-center gap-2">
-              <ArrowUpDown className="w-4 h-4 text-bakery-brown-muted" />
+            <div className="flex items-center gap-1.5">
+              <ArrowUpDown className="w-3.5 h-3.5 text-bakery-brown-muted" />
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="text-xs bg-white text-bakery-brown border border-bakery-border rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-bakery-gold"
+                className="text-xs bg-white text-bakery-brown border border-bakery-border rounded-lg px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-bakery-gold min-h-[34px]"
               >
-                <option value="default">Featured / Catalogue Order</option>
+                <option value="default">Featured</option>
                 <option value="price-low">Price: Low to High</option>
                 <option value="price-high">Price: High to Low</option>
               </select>
@@ -95,8 +94,8 @@ export default function ProductGrid({ onSelectProduct }) {
           </div>
         </div>
 
-        {/* Product Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+        {/* Product Cards Grid: 2-column on mobile >=360px (xs), 1-col on very small screens, 3-4 col on desktop */}
+        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
           {filteredHampers.map((hamper) => (
             <ProductCard
               key={hamper.id}
@@ -106,17 +105,14 @@ export default function ProductGrid({ onSelectProduct }) {
           ))}
         </div>
 
-        {/* Custom Hamper Banner */}
-        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-bakery-maroon via-bakery-maroon-dark to-bakery-maroon text-white shadow-festive border border-bakery-gold/40 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-2 text-center md:text-left">
-            <span className="text-xs uppercase tracking-wider text-bakery-gold font-bold">
-              Custom Festive Gifting
-            </span>
-            <h3 className="font-serif text-xl sm:text-2xl font-bold text-bakery-ivory">
-              Looking for a custom box combination or specific budget?
+        {/* Custom Hamper Notice */}
+        <div className="mt-8 sm:mt-12 p-4 sm:p-6 rounded-2xl bg-white border border-bakery-gold/40 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div className="space-y-1">
+            <h3 className="font-serif font-bold text-sm sm:text-base text-bakery-maroon">
+              Need custom box combinations or a specific budget?
             </h3>
-            <p className="text-xs sm:text-sm text-bakery-ivory/80 max-w-xl">
-              We personalize hampers with your choice of sweets, baked treats, and greeting cards. Message us directly on WhatsApp with your requirements.
+            <p className="text-xs text-bakery-brown-muted">
+              We personalize hampers with your choice of sweets, baked treats, and greeting cards.
             </p>
           </div>
 
@@ -124,9 +120,9 @@ export default function ProductGrid({ onSelectProduct }) {
             href={createWhatsAppLink("Hello The Home Delight Bakery! 🪔 I would like to discuss a customized Diwali hamper box.")}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3.5 rounded-full bg-bakery-gold hover:bg-bakery-gold-light text-bakery-maroon-dark font-bold text-sm shadow-md transition-colors flex items-center gap-2 flex-shrink-0"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-bakery-maroon hover:bg-bakery-maroon-hover text-white font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 flex-shrink-0 min-h-[44px]"
           >
-            <MessageCircle className="w-4 h-4" />
+            <MessageCircle className="w-4 h-4 text-emerald-400" />
             <span>Chat for Custom Hamper</span>
           </a>
         </div>

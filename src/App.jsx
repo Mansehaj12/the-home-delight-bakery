@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
+import TrustBadges from './components/TrustBadges';
 import ProductGrid from './components/ProductGrid';
 import ProductDetailModal from './components/ProductDetailModal';
 import CorporateGifting from './components/CorporateGifting';
@@ -18,7 +19,6 @@ export default function App() {
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
 
   const handleHeroQuickView = () => {
-    // Open product modal for Khoya Barfi (first product in data)
     const barfiProduct = HAMPERS.find(h => h.id === 'khoya-barfi') || HAMPERS[0];
     setSelectedHamper(barfiProduct);
   };
@@ -34,16 +34,20 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-bakery-ivory text-bakery-brown selection:bg-bakery-gold/25 selection:text-bakery-maroon relative">
       {/* Navigation */}
-      <Navbar onOpenQrModal={() => setIsQrModalOpen(true)} />
+      <Navbar />
 
-      {/* Hero Section */}
+      {/* Main Content */}
       <main className="flex-grow">
+        {/* Compact Conversion-focused Hero */}
         <HeroSection
           onExploreClick={scrollToHampers}
           onQuickViewHeroProduct={handleHeroQuickView}
         />
 
-        {/* Diwali Hamper Collection Grid */}
+        {/* Compact Single-Row Trust Badges */}
+        <TrustBadges />
+
+        {/* Diwali Hamper Collection (Products as Main Focus) */}
         <ProductGrid onSelectProduct={(hamper) => setSelectedHamper(hamper)} />
 
         {/* Corporate Gifting Section */}

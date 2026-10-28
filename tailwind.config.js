@@ -6,37 +6,37 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '375px',
+      },
       colors: {
         bakery: {
-          ivory: '#FDFBF7',
-          cream: '#F7F2E8',
+          ivory: '#FFF9F0',
+          cream: '#FBF5EB',
           card: '#FFFFFF',
-          sand: '#EFE7DA',
-          border: '#E8DCC8',
+          sand: '#F3EADB',
+          border: '#EADBC8',
           maroon: {
-            DEFAULT: '#5C131D',
-            hover: '#731925',
-            dark: '#3D0A12',
-            light: '#8E2230',
-            faint: '#FDF2F3'
+            DEFAULT: '#641522',
+            hover: '#7E1C2C',
+            dark: '#480E18',
+            light: '#8C2132',
+            faint: '#FDF4F5'
           },
           gold: {
-            DEFAULT: '#C89D47',
-            light: '#E5C479',
-            dark: '#9B7428',
-            faint: '#FAF5EA',
-            border: '#D9B76A'
+            DEFAULT: '#C49A45',
+            light: '#DCB86A',
+            dark: '#A67F30',
+            faint: '#FDF8EE',
+            border: '#D8B365'
           },
           brown: {
-            DEFAULT: '#2C1810',
-            deep: '#1F110B',
-            muted: '#665348',
-            light: '#8F7A70'
+            DEFAULT: '#49342C',
+            deep: '#33231C',
+            muted: '#715A50',
+            light: '#978278'
           },
-          ruby: {
-            DEFAULT: '#9E2A2B',
-            dark: '#7A1F21'
-          }
+          white: '#FFFFFF'
         }
       },
       fontFamily: {
@@ -45,12 +45,9 @@ export default {
         sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
       },
       boxShadow: {
-        'festive': '0 10px 30px -5px rgba(92, 19, 29, 0.08), 0 4px 12px -2px rgba(200, 157, 71, 0.12)',
-        'festive-lg': '0 20px 40px -10px rgba(92, 19, 29, 0.15), 0 8px 20px -4px rgba(200, 157, 71, 0.2)',
-        'gold-glow': '0 0 25px -3px rgba(200, 157, 71, 0.35)',
-      },
-      backgroundImage: {
-        'diwali-pattern': "radial-gradient(#C89D47 0.75px, transparent 0.75px), radial-gradient(#5C131D 0.75px, #FDFBF7 0.75px)",
+        'card-subtle': '0 2px 8px -2px rgba(73, 52, 44, 0.06), 0 1px 3px -1px rgba(73, 52, 44, 0.04)',
+        'card-hover': '0 8px 20px -4px rgba(100, 21, 34, 0.12), 0 3px 6px -2px rgba(196, 154, 69, 0.15)',
+        'festive': '0 10px 25px -5px rgba(100, 21, 34, 0.08), 0 4px 10px -2px rgba(196, 154, 69, 0.12)',
       }
     },
   },
