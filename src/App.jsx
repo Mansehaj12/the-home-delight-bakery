@@ -18,9 +18,9 @@ export default function App() {
   const [selectedHamper, setSelectedHamper] = useState(null);
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
 
-  const handleHeroQuickView = () => {
-    const barfiProduct = HAMPERS.find(h => h.id === 'khoya-barfi') || HAMPERS[0];
-    setSelectedHamper(barfiProduct);
+  const handleHeroQuickView = (productId = 'khoya-barfi') => {
+    const product = HAMPERS.find(h => h.id === productId) || HAMPERS[0];
+    setSelectedHamper(product);
   };
 
   const scrollToHampers = (e) => {

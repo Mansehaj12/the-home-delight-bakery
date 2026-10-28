@@ -1,8 +1,34 @@
-import React from 'react';
-import { ArrowDown, MessageCircle, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, MessageCircle, Sparkles } from 'lucide-react';
 import { createWhatsAppLink, buildGeneralEnquiryMessage } from '../utils/whatsapp';
 
 export default function HeroSection({ onExploreClick, onQuickViewHeroProduct }) {
+  // Toggle between the two authentic bakery hero spotlights
+  const [activeSpotlight, setActiveSpotlight] = useState('khoya-barfi');
+
+  const spotlights = {
+    'khoya-barfi': {
+      id: 'khoya-barfi',
+      title: 'Homemade Desi Ghee Khoya Barfi',
+      tagline: '100% Eggless • In Purple (500g) & Red (1kg) Festive Boxes',
+      price: 'From ₹400',
+      badge: '★ Signature Khoya Barfi',
+      image: '/images/khoya_barfi.png',
+      alt: 'Homemade Desi Ghee Khoya Barfi promotional poster'
+    },
+    'hamper-200': {
+      id: 'hamper-200',
+      title: 'Premium Handcrafted Chocolate Boxes',
+      tagline: '100% Eggless • Flavoured Chocolates & Cake Pop (₹200 & ₹350)',
+      price: 'From ₹200',
+      badge: '★ Festive Chocolates',
+      image: '/images/choco_box.png',
+      alt: 'Premium Chocolate Boxes promotional poster'
+    }
+  };
+
+  const current = spotlights[activeSpotlight];
+
   return (
     <section id="home" className="relative overflow-hidden pt-4 pb-6 sm:pt-10 sm:pb-12 bg-bakery-ivory">
       {/* Subtle Festive Background Glows */}
@@ -61,29 +87,58 @@ export default function HeroSection({ onExploreClick, onQuickViewHeroProduct }) 
             </p>
           </div>
 
-          {/* Real Hamper Spotlight (Right on desktop, Compact Hero Visual on mobile) */}
-          <div className="lg:col-span-6">
+          {/* Real Hamper Spotlight (Right on desktop, Prominent Visual Card on mobile) */}
+          <div className="lg:col-span-6 space-y-2">
+            
+            {/* Quick Switcher Tabs between Real Products */}
+            <div className="flex items-center justify-center lg:justify-start gap-2">
+              <button
+                type="button"
+                onClick={() => setActiveSpotlight('khoya-barfi')}
+                className={`px-3 py-1 rounded-full text-xs font-semibold transition-colors border ${
+                  activeSpotlight === 'khoya-barfi'
+                    ? 'bg-bakery-maroon text-white border-bakery-maroon shadow-2xs'
+                    : 'bg-white text-bakery-brown border-bakery-border hover:bg-bakery-cream'
+                }`}
+              >
+                🍬 Khoya Barfi (₹400 / ₹800)
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveSpotlight('hamper-200')}
+                className={`px-3 py-1 rounded-full text-xs font-semibold transition-colors border ${
+                  activeSpotlight === 'hamper-200'
+                    ? 'bg-bakery-maroon text-white border-bakery-maroon shadow-2xs'
+                    : 'bg-white text-bakery-brown border-bakery-border hover:bg-bakery-cream'
+                }`}
+              >
+                🍫 Chocolate Boxes (₹200 / ₹350)
+              </button>
+            </div>
+
+            {/* Interactive Spotlight Card */}
             <div
-              onClick={onQuickViewHeroProduct}
-              className="bg-white rounded-2xl sm:rounded-3xl p-2.5 sm:p-4 shadow-card-subtle hover:shadow-card-hover border border-bakery-border transition-all duration-300 cursor-pointer group relative max-w-sm sm:max-w-md mx-auto"
+              onClick={() => onQuickViewHeroProduct(current.id)}
+              className="bg-white rounded-2xl sm:rounded-3xl p-2.5 sm:p-3.5 shadow-card-subtle hover:shadow-card-hover border border-bakery-border transition-all duration-300 cursor-pointer group relative max-w-sm sm:max-w-md mx-auto"
             >
-              {/* Product Photograph Container */}
-              <div className="relative aspect-[4/3] sm:aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden bg-bakery-cream">
+              {/* Product Photograph Container: 1.2:1 aspect ratio preserving the full poster */}
+              <div className="relative aspect-[1.2/1] rounded-xl sm:rounded-2xl overflow-hidden bg-bakery-cream border border-bakery-border/50 flex items-center justify-center">
                 <img
-                  src="/images/1.png"
-                  alt="Homemade Desi Ghee Khoya Barfi from The Home Delight Bakery"
-                  className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
+                  src={current.image}
+                  alt={current.alt}
+                  className="w-full h-full object-contain group-hover:scale-102 transition-transform duration-500"
                   loading="eager"
                 />
 
                 {/* Actual Bakery Photo Badge */}
                 <div className="absolute top-2 left-2 bg-bakery-maroon/90 backdrop-blur-xs text-white text-[10px] sm:text-xs px-2.5 py-1 rounded-full font-semibold border border-bakery-gold/40 shadow-xs flex items-center gap-1">
                   <span>★</span>
-                  <span>Actual Bakery Photo</span>
+                  <span>{current.badge}</span>
                 </div>
 
                 <div className="absolute bottom-2 right-2 bg-white/95 backdrop-blur-xs text-bakery-maroon text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-xs border border-bakery-border">
-                  From ₹400
+                  {current.price}
                 </div>
               </div>
 
@@ -91,18 +146,20 @@ export default function HeroSection({ onExploreClick, onQuickViewHeroProduct }) 
               <div className="pt-2.5 pb-0.5 px-1 flex items-center justify-between gap-2">
                 <div>
                   <h3 className="font-serif font-bold text-sm sm:text-base text-bakery-brown group-hover:text-bakery-maroon transition-colors line-clamp-1">
-                    Homemade Desi Ghee Khoya Barfi
+                    {current.title}
                   </h3>
                   <p className="text-[11px] text-bakery-brown-muted line-clamp-1">
-                    100% Eggless • In Purple (500g) & Red (1kg) Festive Boxes
+                    {current.tagline}
                   </p>
                 </div>
 
-                <span className="flex-shrink-0 text-xs font-semibold text-bakery-maroon underline underline-offset-2">
-                  View →
+                <span className="flex-shrink-0 text-xs font-semibold text-bakery-maroon underline underline-offset-2 flex items-center gap-0.5">
+                  <span>View</span>
+                  <ArrowRight className="w-3 h-3" />
                 </span>
               </div>
             </div>
+
           </div>
 
         </div>

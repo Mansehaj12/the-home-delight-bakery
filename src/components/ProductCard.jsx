@@ -1,5 +1,5 @@
 import React from 'react';
-import { Eye, MessageCircle, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Eye, MessageCircle } from 'lucide-react';
 import { createWhatsAppLink, buildHamperOrderMessage } from '../utils/whatsapp';
 
 export default function ProductCard({ hamper, onSelectProduct }) {
@@ -29,12 +29,12 @@ export default function ProductCard({ hamper, onSelectProduct }) {
       onClick={() => onSelectProduct(hamper)}
       className="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-bakery-border shadow-card-subtle hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between cursor-pointer relative"
     >
-      {/* Product Image Container */}
-      <div className="relative aspect-[4/3] sm:aspect-square bg-bakery-cream overflow-hidden">
+      {/* Product Image Container: 1.2:1 aspect ratio preserving the complete poster without cropping */}
+      <div className="relative aspect-[1.2/1] bg-white overflow-hidden flex items-center justify-center border-b border-bakery-border/40">
         <img
           src={hamper.image}
           alt={hamper.alt || hamper.name}
-          className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-500"
+          className="w-full h-full object-contain group-hover:scale-102 transition-transform duration-300"
           loading="lazy"
         />
 

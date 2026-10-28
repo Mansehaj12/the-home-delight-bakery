@@ -15,64 +15,84 @@ export const HAMPERS = [
     price: 400,
     priceFormatted: "₹400 / ₹800",
     priceRange: "under-500", // also accessible in 500-1000 via variant
-    image: "/images/1.png",
-    alt: "Homemade Desi Ghee Khoya Barfi in festive purple and red gift boxes",
-    tag: "Bakery Signature • 100% Eggless",
-    shortDescription: "Handcrafted traditional khoya barfi cooked in pure desi ghee, garnished with premium almonds and pistachios.",
+    image: "/images/khoya_barfi.png", // Easily update image filename here
+    alt: "Homemade Desi Ghee Khoya Barfi in festive purple (500g) and red (1kg) gift boxes",
+    tag: "Bakery Signature • Pure Desi Ghee",
+    shortDescription: "Handcrafted traditional khoya barfi cooked in pure desi ghee, garnished with premium almonds and pistachios. 100% eggless.",
     isConfirmed: true,
-    _devNotes: "CONFIRMED: Matched to provided reference photograph 1.png. Purple box is 500g (₹400), Red box is 1kg (₹800).",
+    _devNotes: "CONFIRMED: Matched to official promotional poster khoya_barfi.png. Purple box is 500g (₹400), Red box is 1kg (₹800).",
     weight: "500 g or 1 kg",
     variants: [
       {
         id: "500g-purple",
-        label: "500 g — Festive Purple Box",
-        weight: "500 g",
+        label: "500 g (Half Kg) — Festive Purple Box",
+        weight: "500 g (Half Kg)",
         boxColor: "Purple Festive Box",
         price: 400
       },
       {
         id: "1kg-red",
-        label: "1 kg — Royal Red Box",
+        label: "1 kg — Royal Red Festive Box",
         weight: "1 kg",
         boxColor: "Royal Red Festive Box",
         price: 800
       }
     ],
     includedItems: [
-      "Pure Desi Ghee Khoya Barfi prepared from scratch",
+      "Pure Desi Ghee Khoya Barfi prepared fresh from scratch",
       "Garnished with slivered almonds and pistachios",
-      "Traditional Happy Diwali festive presentation box"
+      "Half Kg in festive Purple Box (₹400) or 1 Kg in Royal Red Box (₹800)",
+      "Traditional Happy Diwali presentation packaging"
     ],
     customizationAvailable: true,
     customizationNote: "Festive greeting card tag and box choice customizable."
   },
   {
     id: "hamper-200",
-    name: "Diwali Hamper — ₹200",
+    name: "Premium Chocolate Box — ₹200",
     price: 200,
     priceFormatted: "₹200",
     priceRange: "under-500",
-    image: "/images/hamper-placeholder-gold.svg",
-    alt: "Diwali Hamper ₹200 from The Home Delight Bakery",
-    tag: "Diwali Sweet Hamper",
-    shortDescription: "Thoughtfully curated festive treats handcrafted with care in our Patiala home bakery.",
-    isConfirmed: false,
-    _devNotes: "AWAITING CONFIRMATION: Price observed from bakery reference sheet (₹200). Awaiting photo and exact box contents.",
-    customizationAvailable: true
+    image: "/images/choco_box.png", // Easily update image filename here
+    alt: "Premium Chocolate Box ₹200 from The Home Delight Bakery",
+    tag: "Festive Chocolates • 100% Eggless",
+    shortDescription: "Delightful assortment of handcrafted flavoured chocolates and cake pop in a festive Happy Diwali gift box.",
+    isConfirmed: true,
+    _devNotes: "CONFIRMED: Matched to official promotional poster choco_box.png (top box, ₹200). 3x3 grid box.",
+    weight: "Festive Assorted Box",
+    includedItems: [
+      "2 × Orange Chocolate",
+      "2 × Ras Malai Chocolate",
+      "2 × Strawberry Chocolate",
+      "2 × Pistachio Chocolate",
+      "1 × Vanilla Cake Pop (Center treat)",
+      "Decorative Happy Diwali presentation box"
+    ],
+    customizationAvailable: true,
+    customizationNote: "Personalized Diwali message tag available upon request."
   },
   {
     id: "hamper-350",
-    name: "Diwali Hamper — ₹350",
+    name: "Premium Chocolate Box — ₹350",
     price: 350,
     priceFormatted: "₹350",
     priceRange: "under-500",
-    image: "/images/hamper-placeholder-maroon.svg",
-    alt: "Diwali Hamper ₹350 from The Home Delight Bakery",
-    tag: "Festive Gift Box",
-    shortDescription: "Handcrafted 100% eggless festive delights, beautifully packaged for Diwali gifting.",
-    isConfirmed: false,
-    _devNotes: "AWAITING CONFIRMATION: Price observed from bakery reference sheet (₹350). Awaiting photo and exact box contents.",
-    customizationAvailable: true
+    image: "/images/choco_box.png", // Easily update image filename here
+    alt: "Premium Chocolate Box ₹350 (16 Pieces) from The Home Delight Bakery",
+    tag: "16 Pieces • 100% Eggless",
+    shortDescription: "A rich assortment of 16 handcrafted flavoured chocolates made from scratch in a celebratory Happy Diwali gift box.",
+    isConfirmed: true,
+    _devNotes: "CONFIRMED: Matched to official promotional poster choco_box.png (bottom box, ₹350). 4x4 grid (16 pcs).",
+    weight: "16 Pieces in Festive Box",
+    includedItems: [
+      "4 × Ras Malai Chocolate",
+      "4 × Strawberry Chocolate",
+      "4 × Orange Chocolate",
+      "4 × Pistachio Chocolate",
+      "Decorative Happy Diwali 16-compartment gift box"
+    ],
+    customizationAvailable: true,
+    customizationNote: "Custom festive greetings and corporate gifting tags available."
   },
   {
     id: "hamper-650",
