@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, MessageCircle, QrCode, Sparkles } from 'lucide-react';
+import { Menu, X, MessageCircle, Sparkles } from 'lucide-react';
 import { BAKERY_INFO } from '../data/bakeryInfo';
 import { createWhatsAppLink, buildGeneralEnquiryMessage } from '../utils/whatsapp';
 
@@ -74,14 +74,6 @@ export default function Navbar({ onOpenQrModal }) {
 
           {/* Desktop Action Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            <button
-              onClick={onOpenQrModal}
-              title="Print QR Code for hampers"
-              className="p-2 text-bakery-brown-muted hover:text-bakery-maroon hover:bg-bakery-cream rounded-full transition-colors border border-bakery-border"
-            >
-              <QrCode className="w-4 h-4" />
-            </button>
-
             <a
               href="#hampers"
               className="px-4 py-2 text-sm font-semibold rounded-full bg-bakery-maroon text-bakery-ivory hover:bg-bakery-maroon-hover transition-all shadow-sm hover:shadow-festive flex items-center gap-1.5 border border-bakery-gold/30"
@@ -101,16 +93,8 @@ export default function Navbar({ onOpenQrModal }) {
             </a>
           </div>
 
-          {/* Mobile Menu & QR triggers */}
+          {/* Mobile Menu Trigger */}
           <div className="flex items-center gap-2 lg:hidden">
-            <button
-              onClick={onOpenQrModal}
-              title="QR Code"
-              className="p-2 text-bakery-brown-muted hover:text-bakery-maroon rounded-full border border-bakery-border bg-white"
-            >
-              <QrCode className="w-4 h-4" />
-            </button>
-
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-bakery-maroon rounded-lg hover:bg-bakery-cream transition-colors focus:outline-none focus:ring-2 focus:ring-bakery-gold"
