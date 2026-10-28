@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Flame Outer Glow -->
+  <circle cx="32" cy="18" r="14" fill="#FDF3CF" opacity="0.6"/>
+  <!-- Flame Outer -->
+  <path d="M32 4C32 4 41 15 41 23C41 28 37 32 32 32C27 32 23 28 23 23C23 15 32 4 32 4Z" fill="#E67E22"/>
+  <!-- Flame Core Inner -->
+  <path d="M32 10C32 10 37 17 37 23C37 26 34.8 28.5 32 28.5C29.2 28.5 27 26 27 23C27 17 32 10 32 10Z" fill="#F1C40F"/>
+  <!-- Wick -->
+  <path d="M32 28L32 32" stroke="#5C131D" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Diya Base (Traditional clay diya in rich maroon and gold) -->
+  <path d="M10 32C10 45 20 54 32 54C44 54 54 45 54 32C44 36 20 36 10 32Z" fill="#5C131D"/>
+  <path d="M12 33C20 37 44 37 52 33C50 43 42 51 32 51C22 51 14 43 12 33Z" fill="#7A1B28"/>
+  <!-- Gold Rim and Decorative Dots -->
+  <path d="M9 31C16 35 48 35 55 31C56 33 53 35 50 36C40 38.5 24 38.5 14 36C11 35 8 33 9 31Z" fill="#C89D47"/>
+  <circle cx="32" cy="43" r="2.5" fill="#E5C479"/>
+  <circle cx="23" cy="41" r="2" fill="#E5C479"/>
+  <circle cx="41" cy="41" r="2" fill="#E5C479"/>
+</svg>
