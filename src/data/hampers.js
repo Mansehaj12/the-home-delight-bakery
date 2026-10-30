@@ -240,10 +240,11 @@ export const HAMPERS = [
     priceRange: "1000-1500",
     image: "/images/products/hamper_1350.jpeg",
     alt: "Festive Grandeur Diwali Hamper ₹1,350 from The Home Delight Bakery",
-    tag: "Grand Celebration • 100% Eggless",
+    tag: "Sold Out • 100% Eggless",
     shortDescription: "Diwali festive hamper with 16 chocolates, traditional desi ghee biscuits, chutneys, murabba, and candles.",
     isConfirmed: true,
-    weight: "7-Item Grand Hamper",
+    isSoldOut: true,
+    weight: "7-Item Grand Hamper (Sold Out)",
     includedItems: [
       "Flavourful homemade chocolates (16 pieces)",
       "Carrot murabba (300g)",

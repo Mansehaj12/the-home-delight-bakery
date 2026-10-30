@@ -34,9 +34,14 @@ export default function ProductCard({ hamper, onSelectProduct }) {
         <img
           src={hamper.image}
           alt={hamper.alt || hamper.name}
-          className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-300"
+          className={`w-full h-full object-cover transition-transform duration-300 ${hamper.isSoldOut ? 'opacity-90 grayscale-[15%]' : 'group-hover:scale-103'}`}
           loading="lazy"
         />
+        {hamper.isSoldOut && (
+          <div className="absolute top-2.5 right-2.5 bg-stone-900/90 backdrop-blur-xs text-white text-[10px] sm:text-xs px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider shadow-sm border border-white/20">
+            Sold Out
+          </div>
+        )}
       </div>
 
       {/* Product Information Section — All details outside the photograph */}
@@ -58,14 +63,18 @@ export default function ProductCard({ hamper, onSelectProduct }) {
             </div>
           ) : (
             <div className="flex items-baseline justify-between gap-1">
-              <span className="font-serif font-extrabold text-base sm:text-lg text-bakery-maroon tracking-tight">
+              <span className={`font-serif font-extrabold text-base sm:text-lg tracking-tight ${hamper.isSoldOut ? 'text-bakery-brown-muted line-through' : 'text-bakery-maroon'}`}>
                 {hamper.priceFormatted || `₹${hamper.price}`}
               </span>
-              {hamper.weight && (
+              {hamper.isSoldOut ? (
+                <span className="text-[10px] sm:text-xs font-bold text-red-700 bg-red-50 px-2 py-0.5 rounded-md border border-red-200 uppercase tracking-wide">
+                  Sold Out
+                </span>
+              ) : hamper.weight ? (
                 <span className="text-[10px] sm:text-xs text-bakery-brown-muted bg-bakery-cream px-2 py-0.5 rounded-md border border-bakery-border truncate max-w-[120px] sm:max-w-none">
                   {hamper.weight}
                 </span>
-              )}
+              ) : null}
             </div>
           )}
 
@@ -97,7 +106,7 @@ export default function ProductCard({ hamper, onSelectProduct }) {
           )}
         </div>
 
-        {/* 5 & 6. Action Buttons: Details + WhatsApp Order */}
+        {/* 5 & 6. Action Buttons: Details + WhatsApp Order / Sold Out */}
         <div className="pt-2 border-t border-bakery-border/60 grid grid-cols-2 gap-2">
           <button
             type="button"
@@ -111,14 +120,29 @@ export default function ProductCard({ hamper, onSelectProduct }) {
             <span>Details</span>
           </button>
 
-          <button
-            type="button"
-            onClick={handleQuickWhatsApp}
-            className="w-full py-2 px-2 rounded-xl bg-bakery-maroon hover:bg-bakery-maroon-hover text-white text-xs font-semibold transition-colors flex items-center justify-center gap-1 shadow-2xs min-h-[38px] sm:min-h-[42px]"
-          >
-            <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Order</span>
-          </button>
+          {hamper.isSoldOut ? (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                const message = `Hello The Home Delight Bakery! 🪔 I saw that the "${hamper.name}" (₹${hamper.price}) is currently sold out. Please let me know if a similar custom hamper can be arranged!`;
+                window.open(createWhatsAppLink(message), '_blank');
+              }}
+              className="w-full py-2 px-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-300 text-xs font-semibold transition-colors flex items-center justify-center gap-1 min-h-[38px] sm:min-h-[42px]"
+              title="Sold out - tap to enquire on WhatsApp"
+            >
+              <span className="text-red-700 font-bold">Sold Out</span>
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={handleQuickWhatsApp}
+              className="w-full py-2 px-2 rounded-xl bg-bakery-maroon hover:bg-bakery-maroon-hover text-white text-xs font-semibold transition-colors flex items-center justify-center gap-1 shadow-2xs min-h-[38px] sm:min-h-[42px]"
+            >
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Order</span>
+            </button>
+          )}
         </div>
       </div>
     </div>

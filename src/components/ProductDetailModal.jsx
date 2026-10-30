@@ -125,8 +125,13 @@ export default function ProductDetailModal({ hamper, onClose }) {
                 <img
                   src={selectedVariant?.image || hamper.image}
                   alt={hamper.alt || hamper.name}
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover ${hamper.isSoldOut ? 'opacity-90 grayscale-[15%]' : ''}`}
                 />
+                {hamper.isSoldOut && (
+                  <div className="absolute top-2.5 right-2.5 bg-stone-900/90 backdrop-blur-xs text-white text-[10px] sm:text-xs px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider shadow-sm border border-white/20">
+                    Sold Out
+                  </div>
+                )}
               </div>
 
               <p className="text-[11px] text-emerald-800 font-semibold flex items-center gap-1 justify-center sm:justify-start">
@@ -140,8 +145,15 @@ export default function ProductDetailModal({ hamper, onClose }) {
               {/* Price Banner */}
               <div className="p-3 sm:p-3.5 rounded-xl bg-white border border-bakery-border flex items-baseline justify-between shadow-2xs">
                 <div>
-                  <span className="text-[11px] text-bakery-brown-muted block">Selected Price</span>
-                  <span className="font-serif font-extrabold text-2xl sm:text-3xl text-bakery-maroon">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] text-bakery-brown-muted block">Selected Price</span>
+                    {hamper.isSoldOut && (
+                      <span className="text-[10px] font-bold text-red-700 bg-red-50 px-2 py-0.5 rounded-full border border-red-200 uppercase tracking-wide">
+                        Sold Out
+                      </span>
+                    )}
+                  </div>
+                  <span className={`font-serif font-extrabold text-2xl sm:text-3xl ${hamper.isSoldOut ? 'text-bakery-brown-muted line-through' : 'text-bakery-maroon'}`}>
                     ₹{activePrice}
                   </span>
                   {selectedVariant && (
@@ -153,7 +165,7 @@ export default function ProductDetailModal({ hamper, onClose }) {
 
                 <div className="text-right">
                   <span className="text-[11px] text-bakery-brown-muted block">Estimated Total</span>
-                  <span className="font-serif font-bold text-lg sm:text-xl text-bakery-brown">
+                  <span className={`font-serif font-bold text-lg sm:text-xl ${hamper.isSoldOut ? 'text-bakery-brown-muted' : 'text-bakery-brown'}`}>
                     ₹{totalAmount}
                   </span>
                 </div>
@@ -335,14 +347,28 @@ export default function ProductDetailModal({ hamper, onClose }) {
               Back
             </button>
 
-            <button
-              type="button"
-              onClick={handleOrderWhatsApp}
-              className="w-2/3 sm:w-auto px-5 py-2.5 rounded-xl bg-bakery-maroon hover:bg-bakery-maroon-hover text-white font-bold text-xs sm:text-sm shadow-xs transition-colors flex items-center justify-center gap-1.5 min-h-[44px]"
-            >
-              <MessageCircle className="w-4 h-4 text-emerald-400" />
-              <span>Order on WhatsApp (₹{totalAmount})</span>
-            </button>
+            {hamper.isSoldOut ? (
+              <button
+                type="button"
+                onClick={() => {
+                  const message = `Hello The Home Delight Bakery! 🪔 I am inquiring about the "${hamper.name}" (₹${activePrice}) which is listed as sold out. Please let me know if any slots open up or if a similar custom hamper can be arranged.`;
+                  window.open(createWhatsAppLink(message), '_blank');
+                }}
+                className="w-2/3 sm:w-auto px-5 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-900 text-white font-bold text-xs sm:text-sm shadow-xs transition-colors flex items-center justify-center gap-1.5 min-h-[44px]"
+              >
+                <MessageCircle className="w-4 h-4 text-emerald-400" />
+                <span>Enquire Availability (Sold Out)</span>
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={handleOrderWhatsApp}
+                className="w-2/3 sm:w-auto px-5 py-2.5 rounded-xl bg-bakery-maroon hover:bg-bakery-maroon-hover text-white font-bold text-xs sm:text-sm shadow-xs transition-colors flex items-center justify-center gap-1.5 min-h-[44px]"
+              >
+                <MessageCircle className="w-4 h-4 text-emerald-400" />
+                <span>Order on WhatsApp (₹{totalAmount})</span>
+              </button>
+            )}
           </div>
         </div>
 
